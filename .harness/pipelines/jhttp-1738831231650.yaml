@@ -23,7 +23,10 @@ pipeline:
                   identifier: echo
                   name: echo
                   spec:
-                    command: echo hello world
+                    shell: Sh
+                    command: |-
+                      echo hello world
+                      mvn clean package
                   timeout: ""
                   type: Run
               - step:
