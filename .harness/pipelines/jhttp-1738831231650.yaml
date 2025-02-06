@@ -38,9 +38,35 @@ pipeline:
                   timeout: ""
                   type: BuildAndPushDockerRegistry
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Docker
+            spec: {}
         type: CI
+    - stage:
+        name: SCA
+        identifier: SCA
+        description: ""
+        type: Custom
+        spec:
+          environment:
+            environmentRef: Dev
+            deployToAll: false
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: date
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
